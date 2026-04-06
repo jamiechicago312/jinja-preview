@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000 !important;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff !important;
+            padding: 0;
+            width: 100%;
+        }
+        /* Gmail width fix */
+        .email-container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background-color: #ffffff !important;
+        }
+        .logo-button {
+            display: inline-block;
+            text-decoration: none !important;
+        }
+        .logo-button img {
+            display: block;
+            max-width: 180px;
+            height: auto;
+            margin: 0;
+        }
+        .content {
+            padding: 0 20px;
+            background-color: #ffffff !important;
+        }
+        .hero-section {
+            margin-bottom: 40px;
+        }
+        .hero-text {
+            font-size: 16px;
+            color: #000000 !important;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .hero-list {
+            font-size: 16px;
+            color: #000000 !important;
+            line-height: 1.7;
+            margin: 20px 0 20px 20px;
+            padding-left: 20px;
+        }
+        .hero-list li {
+            margin-bottom: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            padding: 12px 24px;
+            text-decoration: none !important;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 20px auto;
+            border: 2px solid #f2f2f2 !important;
+            width: 260px;
+            max-width: 90%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .cta-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .section-heading {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000000 !important;
+            margin: 30px 0 15px;
+            text-align: center;
+        }
+        /* Logo swap for dark mode */
+        .light-logo {
+            display: block !important;
+        }
+        .dark-logo {
+            display: none !important;
+        }
+        .signature {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #000000 !important;
+            line-height: 1.7;
+        }
+        .footer {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer-links {
+            margin-bottom: 30px;
+        }
+        .footer-links a {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            margin: 0 20px;
+            font-size: 14px;
+        }
+        .footer-text {
+            font-size: 12px;
+            color: #ffffff !important;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .footer-text a {
+            color: #ffffff !important;
+            text-decoration: underline !important;
+        }
+        .social-links {
+            margin: 30px 0 20px;
+        }
+        .social-links a {
+            color: #ffffff !important;
+            margin: 0 15px;
+            text-decoration: none !important;
+            font-size: 20px;
+        }
+        a {
+            color: #000000 !important;
+            text-decoration: underline !important;
+        }
+
+        /* Inline links in content should be underlined for mobile visibility */
+        .hero-text a,
+        .hero-list a,
+        .signature a {
+            text-decoration: underline !important;
+        }
+
+        /* CTA buttons should not be underlined */
+        .cta-button {
+            text-decoration: none !important;
+        }
+
+        /* Single column layout for video clips */
+        .video-clip-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .video-thumbnail {
+            display: block;
+            margin-bottom: 20px;
+        }
+        .video-thumbnail img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+        .video-content {
+            text-align: left;
+        }
+        .video-content p {
+            margin-bottom: 15px;
+        }
+        .video-content .cta-button {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        /* Mobile responsive - allow thumbnails to scale down on small screens */
+        @media screen and (max-width: 600px) {
+            .video-thumbnail img {
+                max-width: 100%;
+            }
+        }
+
+        /* Dark mode styles - Apple Mail, Outlook Mac */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a !important;
+                color: #ffffff !important;
+            }
+            .email-container {
+                background-color: #1a1a1a !important;
+            }
+            .header {
+                background-color: #1a1a1a !important;
+            }
+            .content {
+                background-color: #1a1a1a !important;
+            }
+            .hero-text {
+                color: #ffffff !important;
+            }
+            .hero-list {
+                color: #ffffff !important;
+            }
+            .section-heading {
+                color: #ffffff !important;
+            }
+            .signature {
+                color: #ffffff !important;
+            }
+            a {
+                color: #4da6ff !important;
+                text-decoration: underline !important;
+            }
+            /* Inline links in content should be underlined for mobile visibility */
+            .hero-text a,
+            .hero-list a,
+            .signature a {
+                text-decoration: underline !important;
+            }
+            /* CTA buttons should not be underlined */
+            .cta-button {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 2px solid #f2f2f2 !important;
+                text-decoration: none !important;
+            }
+
+            /* Keep footer links white */
+            .footer-links a {
+                color: #ffffff !important;
+                text-decoration: none !important;
+            }
+            .footer-text a {
+                color: #ffffff !important;
+                text-decoration: underline !important;
+            }
+            .social-links a {
+                color: #ffffff !important;
+                text-decoration: none !important;
+            }
+        }
+
+        /* Dark mode styles - Gmail Android, Outlook Android */
+        [data-ogsc] body {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
+        }
+        [data-ogsc] .email-container {
+            background-color: #1a1a1a !important;
+        }
+        [data-ogsc] .header {
+            background-color: #1a1a1a !important;
+        }
+        [data-ogsc] .content {
+            background-color: #1a1a1a !important;
+        }
+        [data-ogsc] .hero-text {
+            color: #ffffff !important;
+        }
+        [data-ogsc] .hero-list {
+            color: #ffffff !important;
+        }
+        [data-ogsc] .section-heading {
+            color: #ffffff !important;
+        }
+        [data-ogsc] .signature {
+            color: #ffffff !important;
+        }
+        [data-ogsc] a {
+            color: #4da6ff !important;
+        }
+        [data-ogsc] .cta-button {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border: 2px solid #f2f2f2 !important;
+            text-decoration: none !important;
+        }
+        [data-ogsc] .footer-links a {
+            color: #ffffff !important;
+        }
+        [data-ogsc] .footer-text a {
+            color: #ffffff !important;
+        }
+        [data-ogsc] .social-links a {
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <a href="https://openhands.dev?utm_source=newsletter&utm_medium=email&utm_campaign=test-06apr26" class="logo-button">
+                <img src="https://assets.openhands.dev/logo-whitebackground.png" alt="OpenHands Logo" width="180" style="display: block; max-width: 180px; height: auto; border: 0;">
+            </a>
+        </div>
+        
+        <div class="content">
+        <div class="hero-section">
+            <p class="hero-text">
+                Hi there,
+            </p>
+            
+            <p class="hero-text">
+                This is a <strong>test newsletter</strong> to verify the broadcast warmup system is working correctly.
+            </p>
+            
+            <p class="section-heading">Test Section One</p>
+            
+            <p class="hero-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            </p>
+            
+            <div class="cta-container">
+                <a href="https://openhands.dev?utm_source=newsletter&utm_medium=email&utm_campaign=test-06apr26" class="cta-button">Test CTA Button</a>
+            </div>
+            
+            <p class="section-heading">Test Section Two</p>
+            
+            <p class="hero-text">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Here's a <a href="https://github.com/OpenHands/OpenHands">test inline link</a> to verify link styling.
+            </p>
+
+            <ul class="hero-list">
+                <li>Test list item one with <a href="https://openhands.dev/docs">a link</a></li>
+                <li>Test list item two</li>
+                <li>Test list item three</li>
+            </ul>
+
+            <p class="section-heading">Release Notes</p>
+
+            <p class="hero-text">
+                This section tests the release notes format that should appear in newsletters.
+            </p>
+
+            <ul class="hero-list">
+                <li>Feature one: Lorem ipsum dolor sit amet</li>
+                <li>Feature two: Consectetur adipiscing elit</li>
+                <li>Feature three: Sed do eiusmod tempor</li>
+            </ul>
+
+            <div class="signature">
+                <p>If you received this email, the broadcast system is working correctly.</p>
+                <p>Take our <a href="https://assets.openhands.dev/survey">test survey link</a> to verify links work.</p>
+                <p>Best,</p>
+                <p>Jamie Steinberg</p>
+                <p>Developer Relations</p>
+                <p>OpenHands</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="email-container">
+        <div class="footer">
+        <div class="footer-links">
+            <a href="https://openhands.dev/about?utm_source=newsletter&utm_medium=email&utm_campaign=test-06apr26">About</a>
+            <a href="https://openhands.dev/product?utm_source=newsletter&utm_medium=email&utm_campaign=test-06apr26">Product</a>
+            <a href="https://openhands.dev/enterprise?utm_source=newsletter&utm_medium=email&utm_campaign=test-06apr26">Enterprise</a>
+        </div>
+
+        <p class="footer-text">
+            Adjust your subscription or unsubscribe <a href="{{'{{{RESEND_UNSUBSCRIBE_URL}}}'}}">here</a>.
+        </p>
+
+        <p class="footer-text">
+            OpenHands, 24 Oak Street, Cambridge MA 02139
+        </p>
+
+        <p class="footer-text" style="margin-top: 20px;">
+            Follow us
+        </p>
+
+        <div class="social-links">
+            <a href="https://github.com/OpenHands/" title="GitHub">
+                <img src="https://assets.openhands.dev/icon-github.png" alt="GitHub" style="width: 24px; height: 24px; vertical-align: middle;">
+            </a>
+            <a href="https://openhands.dev/joinslack?utm_source=newsletter&utm_medium=email&utm_campaign=test-06apr26" title="Slack">
+                <img src="https://assets.openhands.dev/icon-slack.png" alt="Slack" style="width: 24px; height: 24px; vertical-align: middle;">
+            </a>
+            <a href="https://x.com/openhandsdev" title="X (Twitter)">
+                <img src="https://assets.openhands.dev/icon-x.png" alt="X (Twitter)" style="width: 24px; height: 24px; vertical-align: middle;">
+            </a>
+            <a href="https://www.linkedin.com/company/openhands-ai" title="LinkedIn">
+                <img src="https://assets.openhands.dev/icon-linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px; vertical-align: middle;">
+            </a>
+            <a href="https://www.youtube.com/@OpenHands-AI" title="YouTube">
+                <img src="https://assets.openhands.dev/icon-youtube.png" alt="YouTube" style="width: 24px; height: 24px; vertical-align: middle;">
+            </a>
+        </div>
+
+        <p class="footer-text">
+            © 2026 OpenHands. All rights reserved.
+        </p>
+        </div>
+    </div>
+</body>
+</html>

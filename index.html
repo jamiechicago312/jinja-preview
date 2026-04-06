@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinja Newsletter Preview</title>
+  <meta name="description" content="Paste a Jinja newsletter template on the left and preview the rendered output on the right.">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/3.2.4/nunjucks.min.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Static preview tool</p>
+        <h1>Jinja newsletter preview</h1>
+        <p class="subcopy">
+          Paste a Jinja or HTML email template on the left and render a live preview on the right.
+          This app is static, so it can be hosted on GitHub Pages. It uses Nunjucks in the browser,
+          which is very close to Jinja2 for common newsletter templates.
+        </p>
+      </div>
+
+      <div class="toolbar">
+        <label class="toggle">
+          <input id="auto-render" type="checkbox" checked>
+          <span>Auto-render</span>
+        </label>
+        <button id="load-sample" type="button" class="button button-secondary">Load sample</button>
+        <button id="render-button" type="button" class="button button-primary">Render preview</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel editor-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Template</h2>
+            <p>Paste your Jinja template here.</p>
+          </div>
+        </div>
+        <textarea
+          id="template-input"
+          spellcheck="false"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          placeholder="Paste your Jinja template here..."
+          aria-label="Jinja template input"
+        ></textarea>
+      </section>
+
+      <section class="panel preview-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Preview</h2>
+            <p>Rendered output in a sandboxed iframe.</p>
+          </div>
+          <span id="status-pill" class="status-pill">Ready</span>
+        </div>
+        <div class="preview-surface">
+          <iframe
+            id="preview-frame"
+            title="Rendered newsletter preview"
+            sandbox="allow-popups"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <section id="error-panel" class="panel error-panel hidden" aria-live="polite">
+      <div class="panel-header">
+        <div>
+          <h2>Render error</h2>
+          <p>Fix the template or context and render again.</p>
+        </div>
+      </div>
+      <pre id="error-message"></pre>
+    </section>
+
+    <section class="bottom-grid">
+      <section class="panel context-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Context JSON</h2>
+            <p>Optional variables available to the template while rendering.</p>
+          </div>
+        </div>
+        <textarea
+          id="context-input"
+          spellcheck="false"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          aria-label="Template context JSON"
+        >{}</textarea>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="panel-header">
+          <div>
+            <h2>Rendered HTML</h2>
+            <p>Useful for copying the final output.</p>
+          </div>
+          <button id="copy-output" type="button" class="button button-secondary">Copy HTML</button>
+        </div>
+        <pre id="rendered-output">Render a template to see the output here.</pre>
+      </section>
+    </section>
+  </div>
+</body>
+</html>
